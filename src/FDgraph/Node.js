@@ -10,14 +10,10 @@ const Node = ({ x, y, size, title, isParent }) => {
         <g
             className={`node ${isParent && "parent"}`}
             transform={`translate(${x},${y})`}
+            onMouseEnter={() => setshowTitle(true)}
+            onMouseLeave={() => setshowTitle(false)}
         >
-            <circle
-                onMouseEnter={() => setshowTitle(true)}
-                onMouseLeave={() => setshowTitle(false)}
-                cx={0}
-                cy={0}
-                r={!isParent ? size : parentSize(size)}
-            />
+            <circle cx={0} cy={0} r={!isParent ? size : parentSize(size)} />
             {(showTitle || isParent || showAllTitles) && (
                 <text transform={`translate(${size + 5},0)`}>{title}</text>
             )}

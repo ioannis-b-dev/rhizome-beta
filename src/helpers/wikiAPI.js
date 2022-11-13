@@ -19,6 +19,7 @@ export const getParentData = async (pageTitle) => {
 
 export const getChildrenData = async (pageTitle, numLinks) => {
     const allData = await getALLPageLinksData(pageTitle);
+    console.log(allData);
     const f_data = filterData(allData);
     const selectedData = getRandomLinks(f_data, numLinks);
 
@@ -40,7 +41,7 @@ const getPageLinksData = async (pageTitle, continueID) => {
         params: { ...params, gplcontinue: continueID },
     });
     const linksData = Object.values(response.data.query.pages);
-    let nextID;
+    let nextID = null;
     // if (linksData.length === 500) nextID = response.data.continue.gplcontinue;
     return { linksData, nextID };
 };
@@ -208,7 +209,7 @@ export const getRandLinks = async (pageTitle, numLinks) => {
 };
 
 //not available yet
-const getLinksToPage = async (pageTitle) => {
+export const getLinksToPage = async (pageTitle) => {
     const response = await axios.get(BASE_URL, {
         params: { titles: pageTitle, prop: "linkshere", lhprop: "title" },
     });

@@ -5,7 +5,7 @@ import { dataToVis } from "./dataToVis";
 const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
     const [loading, setLoading] = useState(false);
-    const [searchWiki, setSearchWiki] = useState();
+    const [searchWiki, setSearchWiki] = useState(null);
     const [renderParameters, setRenderParameters] = useState({
         showAllTitles: false,
     });
@@ -28,14 +28,12 @@ const AppProvider = ({ children }) => {
 
         simulationData = dataToVis({ parentData, childrenData });
 
-        // simulationData = await recursiveData(parentData, 2, simulationData);
-
         //SECOND ITERATION
         for (let i = 0; i < childrenData.length; i++) {
             parentData = childrenData[i];
             const newChildrenData = await getChildrenData(parentData.id, 2);
-            console.log("PARENT:", parentData);
-            console.log("CHILDREN:", newChildrenData);
+            // console.log("PARENT:", parentData);
+            // console.log("CHILDREN:", newChildrenData);
             const { nodes, links } = dataToVis({
                 parentData,
                 childrenData: newChildrenData,
