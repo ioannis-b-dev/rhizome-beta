@@ -1,0 +1,37 @@
+$strokeC1: #e6852a7a;
+$fillC1: #005d6e7e;
+$fillC2: #42a6b37b;
+$textC: #f9feff;
+.forceGraph {
+    .node {
+        circle {
+            stroke: $strokeC1;
+            fill: $fillC1;
+            stroke-width: 3px;
+            &:hover {
+                cursor: pointer;
+                fill: $fillC2;
+            }
+        }
+        text {
+            fill: $textC;
+            font-size: 20px;
+            alignment-baseline: middle;
+        }
+    }
+    .parent {
+        circle {
+            stroke: $strokeC1;
+            fill: brown;
+            stroke-width: 3px;
+            &:hover {
+                cursor: pointer;
+                fill: $fillC2;
+            }
+        }
+    }
+
+    .spring {
+        stroke: #e6852a7a;
+    }
+}

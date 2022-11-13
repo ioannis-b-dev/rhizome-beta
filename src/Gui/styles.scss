@@ -1,0 +1,180 @@
+$primary-color: rgb(177, 38, 20);
+$secondary-color: rgb(129, 133, 15);
+$border-radius: 0.2rem;
+$border: 1px solid $secondary-color;
+.gui {
+    position: absolute;
+    top: 4%;
+    left: calc(95% - 300px);
+    text-align: center;
+    line-height: 1;
+    border-radius: $border-radius;
+    background-color: transparent;
+    padding: 1em;
+    min-width: 300px;
+
+    .drag-circle {
+        position: absolute;
+        top: 0;
+        left: 0;
+        cursor: pointer;
+        circle {
+            fill: $secondary-color;
+        }
+    }
+    .params {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        &-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.3em;
+        }
+    }
+    .header {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: $primary-color;
+        color: $primary-color;
+        padding: 0.2em;
+        border-radius: $border-radius;
+        font-size: 20px;
+        letter-spacing: 0.1em;
+        // margin-bottom: 0.8em;
+        border-bottom: none;
+        text-align: left;
+        svg,
+        rect {
+            border-radius: $border-radius;
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+    .mt-1 {
+        margin-top: 1em;
+    }
+    .button {
+        width: 100%;
+        background-color: black;
+        color: $secondary-color;
+
+        border: 3px solid $secondary-color;
+        letter-spacing: 1px;
+        padding: 0.75em 1em;
+        border-radius: $border-radius;
+        &:hover {
+            border: 3px solid $primary-color;
+            cursor: pointer;
+            color: black;
+            background-color: $secondary-color;
+        }
+    }
+    .input {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        border: $border;
+        border-radius: $border-radius;
+        padding-inline: 0.3em;
+        .input-label {
+            padding: 0.1em 0.8em;
+            font-size: 12px;
+            text-align: center;
+        }
+
+        .input-field {
+            flex: 1;
+            display: block;
+
+            background-color: black;
+            border: $border;
+            border-radius: $border-radius;
+            // padding: 1em 0em;
+            padding: 0;
+            margin: 0.5em 0.2em;
+            min-height: 100%;
+            text-align: center;
+            line-height: 2;
+
+            font-size: 16px;
+            letter-spacing: 2.5px;
+            color: $primary-color;
+            &::placeholder {
+                background-color: rgba($secondary-color, 0.1);
+                color: $primary-color;
+                letter-spacing: 1px;
+            }
+            &:focus {
+                outline: none;
+                caret-color: $secondary-color;
+
+                // background-color: rgba(129, 133, 15, 0.3);
+            }
+        }
+    }
+
+    .panelSlider {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+
+        border: $border;
+
+        padding: 0.3em 0.2em;
+        border-radius: 0.2em;
+        .slider {
+            -webkit-appearance: none; /* Override default CSS styles */
+            appearance: none;
+            width: 100%; /* Full-width */
+            height: 3px; /* Specified height */
+            background: $secondary-color; /* Grey background */
+
+            outline: none; /* Remove outline */
+            margin: 11px 10px;
+            -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+            transition: opacity 0.2s;
+
+            &::-webkit-slider-thumb {
+                -webkit-appearance: none; /* Override default look */
+                appearance: none;
+                // border-radius: 100%;
+                width: 7px; /* Set a specific slider handle width */
+                height: 17px; /* Slider handle height */
+                border: 2px solid $primary-color;
+                background: rgb(22, 21, 21); /* Green background */
+                cursor: pointer; /* Cursor on hover */
+            }
+
+            &::-moz-range-thumb {
+                width: 15px; /* Set a specific slider handle width */
+                height: 15px; /* Slider handle height */
+                border: 2px solid black;
+                background: #ffffff; /* Green background */
+                cursor: pointer; /* Cursor on hover */
+            }
+        }
+
+        .slider__value {
+            border-left: 1px solid $secondary-color;
+            flex: 0 0 15%;
+            height: 100%;
+            text-align: center;
+            padding: 0;
+            margin: 0;
+            border-right: none;
+        }
+        .slider__title {
+            flex: 0 0 20%;
+            padding: 0.1em 0.2em;
+            font-size: 12px;
+            height: 100%;
+        }
+    }
+}
