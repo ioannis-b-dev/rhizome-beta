@@ -19,7 +19,7 @@ export const getParentData = async (pageTitle) => {
 
 export const getChildrenData = async (pageTitle, numLinks) => {
     const allData = await getALLPageLinksData(pageTitle);
-    console.log(allData);
+    console.log("All Data :", allData);
     const f_data = filterData(allData);
     const selectedData = getRandomLinks(f_data, numLinks);
 
@@ -51,15 +51,12 @@ const getALLPageLinksData = async (pageTitle) => {
     let continueID;
     let allLinksData = [];
     while (continueSearch) {
-        const { linksData, nextID } = await getPageLinksData(
-            pageTitle,
-            continueID
-        );
+        const { linksData } = await getPageLinksData(pageTitle, continueID);
         allLinksData.push(...linksData);
-
-        nextID ? (continueID = nextID) : (continueSearch = false);
+        continueSearch = false;
+        // nextID ? (continueID = nextID) : (continueSearch = false);
     }
-    console.log("rawdata: ", allLinksData.length);
+    // console.log("rawdata: ", allLinksData.length);
     return allLinksData;
 };
 
@@ -67,11 +64,13 @@ const getALLPageLinksData = async (pageTitle) => {
 export const getRandomLinks = (linksData, numLinks) => {
     //generate 10 UNIQUE random numbers
     const randomNums = new Set();
+    if (linksData.length < numLinks) numLinks = linksData.length;
     while (randomNums.size < numLinks) {
         randomNums.add(Math.floor(Math.random() * linksData.length));
     }
 
     const filteredLinks = linksData.filter((_, index) => randomNums.has(index));
+    console.log("links selected: ", filteredLinks);
     //return the resulting array
     return filteredLinks;
 };

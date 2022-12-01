@@ -22,8 +22,7 @@ const Gui = () => {
         x: 0,
         y: 0,
     });
-    const [isDraggable, setIsDraggable] = useState(false);
-
+    const [showGui, setShowGui] = useState(false);
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
         setParameters((prev) => {
@@ -54,98 +53,85 @@ const Gui = () => {
         });
     };
 
-    const handleDrag = (e) => {
-        e.preventDefault();
-        const { clientX, clientY } = e;
-        setGuiPos({ x: clientX, y: clientY });
-    };
-
-    const handleDragEnd = (e) => {
-        e.preventDefault();
-        const { clientX, clientY } = e;
-        setGuiPos({ x: clientX, y: clientY });
-    };
     return (
         <div
             className="gui"
             style={{ transform: `translate(${guiPos.x}px,${guiPos.y}px)` }}
-            draggable={isDraggable}
-            onDrag={handleDrag}
-            onDragEnd={handleDragEnd}
         >
-            {/* <svg width={15} height={15} className="drag-circle">
-                <circle
-                    cx={7.5}
-                    cy={7.5}
-                    r={15}
-                    onMouseDown={() => setIsDraggable(false)}
-                    onMouseUp={() => setIsDraggable(true)}
-                ></circle>
-            </svg> */}
-
-            <form className="params">
-                <InputGroup name="DATA">
-                    <InputSlider
-                        name="iterations"
-                        label="ITERATIONS"
-                        value={parameters.iterations}
-                        min={1}
-                        max={2}
-                        onChange={handleChange}
-                    />
-                    <InputSlider
-                        name="numLinks"
-                        label="LINKS PER ITERATION"
-                        value={parameters.numLinks}
-                        min={1}
-                        max={20}
-                        onChange={handleChange}
-                    />
-                    <InputText
-                        label="ORIGIN"
-                        name="origin"
-                        value={parameters.origin}
-                        onChange={handleChange}
-                    ></InputText>
-                    <button className="button mt-1" onClick={handleSubmit}>
-                        SEARCH
-                    </button>
-                </InputGroup>
-                <InputGroup name="FORCES">
-                    <InputSlider
-                        name="gravitation"
-                        label="CENTER GRAVITY"
-                        value={parameters.gravitation}
-                        min={0}
-                        max={100}
-                        onChange={handleChange}
-                    />
-                    <InputSlider
-                        name="repulsion"
-                        label="REPULSION"
-                        value={parameters.repulsion}
-                        min={0}
-                        max={100}
-                        onChange={handleChange}
-                    />
-                    <InputSlider
-                        name="spring"
-                        label="SPRING"
-                        value={parameters.spring}
-                        min={0}
-                        max={100}
-                        onChange={handleChange}
-                    />
-                </InputGroup>
-                <InputGroup name="RENDER">
-                    <InputCheckbox
-                        name="showTitles"
-                        label="SHOW TITLES"
-                        checked={parameters.showTitles}
-                        onChange={handleChange}
-                    />
-                </InputGroup>
-            </form>
+            <div className="gui-toggle">
+                <svg
+                    width={20}
+                    height={40}
+                    onClick={() => setShowGui(!showGui)}
+                >
+                    <rect width={20} height={40} fill="green" />
+                </svg>
+            </div>
+            {showGui && (
+                <form className="params">
+                    <InputGroup name="DATA">
+                        <InputSlider
+                            name="iterations"
+                            label="ITERATIONS"
+                            value={parameters.iterations}
+                            min={1}
+                            max={2}
+                            onChange={handleChange}
+                        />
+                        <InputSlider
+                            name="numLinks"
+                            label="LINKS PER ITERATION"
+                            value={parameters.numLinks}
+                            min={1}
+                            max={20}
+                            onChange={handleChange}
+                        />
+                        <InputText
+                            label="ORIGIN"
+                            name="origin"
+                            value={parameters.origin}
+                            onChange={handleChange}
+                        ></InputText>
+                        <button className="button mt-1" onClick={handleSubmit}>
+                            SEARCH
+                        </button>
+                    </InputGroup>
+                    <InputGroup name="FORCES">
+                        <InputSlider
+                            name="gravitation"
+                            label="CENTER GRAVITY"
+                            value={parameters.gravitation}
+                            min={0}
+                            max={100}
+                            onChange={handleChange}
+                        />
+                        <InputSlider
+                            name="repulsion"
+                            label="REPULSION"
+                            value={parameters.repulsion}
+                            min={0}
+                            max={100}
+                            onChange={handleChange}
+                        />
+                        <InputSlider
+                            name="spring"
+                            label="SPRING"
+                            value={parameters.spring}
+                            min={0}
+                            max={100}
+                            onChange={handleChange}
+                        />
+                    </InputGroup>
+                    <InputGroup name="RENDER">
+                        <InputCheckbox
+                            name="showTitles"
+                            label="SHOW TITLES"
+                            checked={parameters.showTitles}
+                            onChange={handleChange}
+                        />
+                    </InputGroup>
+                </form>
+            )}
         </div>
     );
 };

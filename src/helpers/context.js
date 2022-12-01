@@ -14,37 +14,48 @@ const AppProvider = ({ children }) => {
     const [data, setData] = useState(null);
     const getData = useCallback(async () => {
         setLoading(true);
-        let simulationData = {};
-        //FIRST ITERATION
-        let parentData;
-        let childrenData;
-        parentData = await getParentData(searchWiki.origin);
-        parentData = { ...parentData, isParent: true };
+        setData(null);
+        try {
+            let simulationData = {};
+            //FIRST ITERATION
+            let parentData;
+            let childrenData;
+            parentData = await getParentData(searchWiki.origin);
+            parentData = { ...parentData, isParent: true };
 
-        childrenData = await getChildrenData(
-            searchWiki.origin,
-            searchWiki.numLinks
-        );
+            childrenData = await getChildrenData(
+                searchWiki.origin,
+                searchWiki.numLinks
+            );
 
-        simulationData = dataToVis({ parentData, childrenData });
+            if (childrenData) {
+                simulationData = dataToVis({ parentData, childrenData });
 
-        //SECOND ITERATION
-        for (let i = 0; i < childrenData.length; i++) {
-            parentData = childrenData[i];
-            const newChildrenData = await getChildrenData(parentData.id, 2);
-            // console.log("PARENT:", parentData);
-            // console.log("CHILDREN:", newChildrenData);
-            const { nodes, links } = dataToVis({
-                parentData,
-                childrenData: newChildrenData,
-            });
-            simulationData.nodes.push(...nodes);
-            simulationData.links.push(...links);
+                //SECOND ITERATION
+                for (let i = 0; i < childrenData.length; i++) {
+                    parentData = childrenData[i];
+                    const newChildrenData = await getChildrenData(
+                        parentData.id,
+                        2
+                    );
+                    // console.log("PARENT:", parentData);
+                    // console.log("CHILDREN:", newChildrenData);
+                    const { nodes, links } = dataToVis({
+                        parentData,
+                        childrenData: newChildrenData,
+                    });
+                    simulationData.nodes.push(...nodes);
+                    simulationData.links.push(...links);
+                }
+                setData(simulationData);
+            } else {
+                setData(null);
+            }
+
+            setLoading(false);
+        } catch (error) {
+            setLoading(false);
         }
-
-        //SENDING DATA FOR SIMULATION
-        setData(simulationData);
-        setLoading(false);
     }, [searchWiki]);
 
     useEffect(() => {

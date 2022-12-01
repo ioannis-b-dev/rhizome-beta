@@ -7,7 +7,6 @@ const Display = ({ bgColor }) => {
     const {
         screenSize: { width, height },
     } = useScreenSize();
-    console.log(data);
     return (
         <svg width={width} height={height} fill={bgColor}>
             {data ? (
