@@ -1,7 +1,7 @@
 import Display from "./Display";
 import Gui from "./Gui";
 import "./styles.scss";
-
+import { Example } from "./features/Example";
 const App = () => {
     return (
         <div className="app">
@@ -10,8 +10,9 @@ const App = () => {
                     RHIZOME<span>BETA</span>
                 </h1>
             </header>
-            <Display bgColor={"white"} />
-            <Gui />
+            <Display />
+            <Example />
+            {/* <Gui /> */}
         </div>
     );
 };
