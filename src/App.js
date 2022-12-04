@@ -1,5 +1,4 @@
 import Display from "./Display";
-import Gui from "./Gui";
 import "./styles.scss";
 import { Example } from "./features/Example";
 const App = () => {

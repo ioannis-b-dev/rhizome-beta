@@ -18,9 +18,7 @@ const variants = {
     },
 };
 
-const colors = ["#FF008C", "#D309E1", "#9C1AFF", "#7700FF", "#4400FF"];
-
-export const MenuItem = ({ name, value }) => {
+export const TestInputText = ({ label, value, range, onChange }) => {
     const style = { border: `2px solid rgb(46, 46, 46)` };
     return (
         <motion.li
@@ -29,11 +27,7 @@ export const MenuItem = ({ name, value }) => {
             whileTap={{ scale: 0.95 }}
             className="menu-item"
         >
-            <div className="text">{name}</div>
-            <div className="text-placeholder" style={style} />
-            <div className="icon-placeholder" style={style}>
-                {value}
-            </div>
+            <div className="text">TEST TEXT</div>
         </motion.li>
     );
 };

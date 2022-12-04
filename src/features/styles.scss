@@ -65,18 +65,58 @@ li {
     place-items: center;
     color: $color-dark;
 }
-
+.button-placeholder {
+    border-radius: 5px;
+    background-color: $color-dark;
+    border: 2px solid $color-white;
+    color: $color-white;
+    width: 200px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    flex: 1;
+}
 .text-placeholder {
     border-radius: 5px;
     width: 200px;
     height: 20px;
     flex: 1;
 }
+.slider {
+    -webkit-appearance: none; /* Override default CSS styles */
+    appearance: none;
+    width: 100%; /* Full-width */
+    height: 3px; /* Specified height */
+    background: $color-dark; /* Grey background */
 
+    outline: none; /* Remove outline */
+    margin: 11px 10px;
+    -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+    transition: opacity 0.2s;
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none; /* Override default look */
+        appearance: none;
+        // border-radius: 100%;
+        width: 7px; /* Set a specific slider handle width */
+        height: 17px; /* Slider handle height */
+        border: 2px solid $color-white;
+        background: rgb(22, 21, 21); /* Green background */
+        cursor: pointer; /* Cursor on hover */
+    }
+
+    &::-moz-range-thumb {
+        width: 15px; /* Set a specific slider handle width */
+        height: 15px; /* Slider handle height */
+        border: 2px solid black;
+        background: #ffffff; /* Green background */
+        cursor: pointer; /* Cursor on hover */
+    }
+}
 .menu-item {
-    border: 2px solid $color-dark;
+    background: rgb(252, 252, 252);
     border-radius: 5px;
-    padding-inline: 25px;
+    padding: 1px;
 }
 .text {
     color: $color-dark;

@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { motion, useCycle } from "framer-motion";
 import { useDimensions } from "../helpers/useDimensions";
 import { MenuToggle } from "./MenuToggle";
-import { Navigation } from "./Navigation";
+import { Gui } from "./Gui";
 import "./styles.scss";
 
 const sidebar = {
@@ -15,7 +15,7 @@ const sidebar = {
         },
     }),
     closed: {
-        clipPath: "circle(30px at 285px 8%)",
+        clipPath: "circle(20px at 285px 8%)",
         transition: {
             delay: 0.5,
             type: "spring",
@@ -37,7 +37,7 @@ export const Example = () => {
             ref={containerRef}
         >
             <motion.div className="background" variants={sidebar} />
-            <Navigation />
+            <Gui />
             <MenuToggle toggle={() => toggleOpen()} />
         </motion.nav>
     );
