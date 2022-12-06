@@ -55,39 +55,51 @@ export const Gui = () => {
         });
     };
     return (
-        <motion.ul variants={variants}>
+        <motion.ul variants={variants} className="menu">
+            <h2>Data</h2>
             <GuiSlider
                 label="iterations"
+                name="iterations"
                 value={parameters.iterations}
                 range={[1, 2]}
                 onChange={handleChange}
             />
             <GuiSlider
                 label="numLinks"
+                name="numLinks"
                 value={parameters.numLinks}
                 range={[1, 20]}
                 onChange={handleChange}
             />
-            <TestInputText />
+            <TestInputText
+                name="origin"
+                value={parameters.origin}
+                onChange={handleChange}
+            />
             <TestButton handleSubmit={handleSubmit} />
+            <h2>Forces</h2>
             <GuiSlider
-                label="gravitation"
+                label="gravity"
+                name="gravitation"
                 value={parameters.gravitation}
                 range={[0, 100]}
                 onChange={handleChange}
             />
             <GuiSlider
                 label="repulsion"
+                name="repulsion"
                 value={parameters.repulsion}
                 range={[0, 100]}
                 onChange={handleChange}
             />
             <GuiSlider
                 label="spring"
+                name="spring"
                 value={parameters.spring}
                 range={[0, 100]}
                 onChange={handleChange}
             />
+            <h2>Render</h2>
             <TestCheckbox
                 label="Show Titles"
                 name="showTitles"

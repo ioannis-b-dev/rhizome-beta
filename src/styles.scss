@@ -12,6 +12,9 @@ input:focus {
     outline: none;
     border: 1px solid rgb(0, 0, 0);
 }
+input {
+    font-family: "Share Tech Mono", monospace;
+}
 body {
     background-color: hsl(0, 0%, 0%);
     font-family: "Share Tech Mono", monospace;

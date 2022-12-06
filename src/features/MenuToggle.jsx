@@ -12,8 +12,8 @@ const Path = (props) => (
 );
 
 export const MenuToggle = ({ toggle }) => (
-    <button onClick={toggle}>
-        <svg width="23" height="23" viewBox="0 0 23 23">
+    <button onClick={toggle} className="togglePanel">
+        <svg width="20" height="20" viewBox="0 0 20 20">
             <Path
                 variants={{
                     closed: { d: "M 2 2.5 L 20 2.5" },

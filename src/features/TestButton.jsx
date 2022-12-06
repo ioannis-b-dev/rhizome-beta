@@ -24,11 +24,11 @@ export const TestButton = ({ handleSubmit }) => {
             variants={variants}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
-            className="menu-item"
+            className="menu-item buttonmenu"
             onClick={handleSubmit}
             style={{ border: "none" }}
         >
-            <div className="button-placeholder">TEST SUBMIT BUTTON</div>
+            <div className="button-placeholder">Search</div>
         </motion.li>
     );
 };

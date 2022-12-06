@@ -10,6 +10,7 @@ import {
 import { useGlobalContext } from "../helpers/context";
 import Node from "./Node";
 import Spring from "./Spring";
+import { motion } from "framer-motion";
 //scale contants
 const NODE_SIZE = 12;
 
@@ -96,12 +97,13 @@ export default function FDgraph({ data, width, height, bgColor }) {
     const links = data.links;
 
     return (
-        <g
+        <motion.g
             className="forceGraph"
             transform={`translate(${centerX},${centerY})`}
+            drag
         >
             <ForceGraph nodes={nodes} links={links} N={N} />
-        </g>
+        </motion.g>
     );
 }
 

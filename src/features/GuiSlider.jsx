@@ -18,10 +18,10 @@ const variants = {
     },
 };
 
-export const GuiSlider = ({ label, value, range, onChange }) => {
+export const GuiSlider = ({ label, name, value, range, onChange }) => {
     const style = { border: `2px solid rgb(46, 46, 46)` };
     return (
-        <motion.li
+        <motion.div
             variants={variants}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
@@ -35,12 +35,12 @@ export const GuiSlider = ({ label, value, range, onChange }) => {
                 min={range[0]}
                 max={range[1]}
                 value={value}
-                name={label}
+                name={name}
                 onChange={onChange}
             />
-            <div className="icon-placeholder" style={style}>
+            <div className="value" style={style}>
                 {value}
             </div>
-        </motion.li>
+        </motion.div>
     );
 };

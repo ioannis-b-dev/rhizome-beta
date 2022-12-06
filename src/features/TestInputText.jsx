@@ -18,7 +18,7 @@ const variants = {
     },
 };
 
-export const TestInputText = ({ label, value, range, onChange }) => {
+export const TestInputText = ({ name, value, onChange }) => {
     const style = { border: `2px solid rgb(46, 46, 46)` };
     return (
         <motion.li
@@ -27,7 +27,14 @@ export const TestInputText = ({ label, value, range, onChange }) => {
             whileTap={{ scale: 0.95 }}
             className="menu-item"
         >
-            <div className="text">TEST TEXT</div>
+            <input
+                className="inputtext"
+                type="text"
+                name={name}
+                value={value}
+                placeholder="Point of origin"
+                onChange={onChange}
+            />
         </motion.li>
     );
 };
