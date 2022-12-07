@@ -39,7 +39,7 @@ li {
     }
     .menu {
         position: absolute;
-        top: 100px;
+        top: 50px;
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -48,18 +48,23 @@ li {
     }
     .togglePanel {
         top: 12.5px;
-        left: 15px;
+        right: 5%;
 
         display: grid;
         place-items: center;
     }
     &-header {
         position: absolute;
-        top: 40px;
+        top: 12.5px;
         left: 50%;
-        transform: translateX(-50%);
+        transform: translate(-50%, 25%);
         text-align: left;
+    }
+    .text-dark {
         color: $color-dark;
+    }
+    .text-white {
+        color: $color-white;
     }
 }
 h2 {
@@ -67,7 +72,6 @@ h2 {
     margin-left: 15px;
 }
 .menu-item {
-    cursor: pointer;
     display: grid;
     align-items: center;
     justify-content: center;
@@ -86,6 +90,9 @@ h2 {
         color: $color-dark;
         margin-left: 10px;
     }
+}
+.no-display {
+    display: none;
 }
 .buttonmenu {
     justify-items: center;

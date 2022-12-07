@@ -4,7 +4,7 @@ import { useDimensions } from "../helpers/useDimensions";
 import { MenuToggle } from "./MenuToggle";
 import { Gui } from "./Gui";
 import "./styles.scss";
-
+import useScreenSize from "../helpers/useScreenSize";
 const sidebar = {
     open: (height = 1000) => ({
         clipPath: `circle(${height * 2 + 200}px at 0% 0%)`,
@@ -15,7 +15,7 @@ const sidebar = {
         },
     }),
     closed: (height = 1000, width = 350) => ({
-        clipPath: `inset(10px 10px ${height * 0.7}px 10px)`,
+        clipPath: `circle(20px at 88.5% 32.5px)`,
         transition: {
             delay: 0.5,
             type: "spring",
@@ -24,11 +24,11 @@ const sidebar = {
         },
     }),
 };
-export const Example = () => {
+export const Panel = () => {
     const [isOpen, toggleOpen] = useCycle(false, true);
     const containerRef = useRef(null);
     const { height, width } = useDimensions(containerRef);
-
+    const { isMobileView } = useScreenSize();
     return (
         <motion.nav
             initial={false}
@@ -40,7 +40,15 @@ export const Example = () => {
             <motion.div className="background" variants={sidebar} />
             <Gui />
             <MenuToggle toggle={() => toggleOpen()} />
-            <h1 className="panel-header">PARAMETERS</h1>
+            {!isMobileView && (
+                <h1
+                    className={`panel-header ${
+                        isOpen ? "text-dark" : "text-white"
+                    }`}
+                >
+                    PARAMETERS
+                </h1>
+            )}
         </motion.nav>
     );
 };

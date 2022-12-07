@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 const useScreenSize = (navRef) => {
-    const MOBILE_BREAKING_POINT = 992;
+    const MOBILE_BREAKING_POINT = 500;
 
     const [isMobileView, setIsMobileView] = useState(false);
     const [screenSize, setScreenSize] = useState({ width: 0, height: 0 });

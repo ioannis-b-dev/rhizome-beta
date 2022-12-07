@@ -5,8 +5,6 @@ const variants = {
     open: {
         y: 0,
         opacity: 1,
-        pointerEvents: "auto",
-        cursor: "auto",
         transition: {
             y: { stiffness: 1000, velocity: -100 },
         },
@@ -14,31 +12,22 @@ const variants = {
     closed: {
         y: 50,
         opacity: 0,
-        pointerEvents: "none",
-        cursor: "default",
         transition: {
             y: { stiffness: 1000 },
         },
     },
 };
-
-export const TestInputText = ({ name, value, onChange }) => {
-    const style = { border: `2px solid rgb(46, 46, 46)` };
+const MenuWrapper = ({ children }) => {
     return (
-        <motion.li
+        <motion.div
             variants={variants}
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
             className="menu-item"
         >
-            <input
-                className="inputtext"
-                type="text"
-                name={name}
-                value={value}
-                placeholder="Point of origin"
-                onChange={onChange}
-            />
-        </motion.li>
+            {children}
+        </motion.div>
     );
 };
+
+export default MenuWrapper;

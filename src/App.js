@@ -1,6 +1,6 @@
 import Display from "./Display";
 import "./styles.scss";
-import { Example } from "./features/Example";
+import { Panel } from "./features/Panel";
 const App = () => {
     return (
         <div className="app">
@@ -10,9 +10,7 @@ const App = () => {
                 </h1>
             </header>
             <Display />
-            <Example />
-
-            {/* <Gui /> */}
+            <Panel />
         </div>
     );
 };

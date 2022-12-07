@@ -5,6 +5,7 @@ import { GuiSlider } from "./GuiSlider";
 import { TestButton } from "./TestButton";
 import { TestInputText } from "./TestInputText";
 import { TestCheckbox } from "./TestCheckbox";
+import MenuWrapper from "./MenuWrapper";
 const variants = {
     open: {
         transition: { staggerChildren: 0.07, delayChildren: 0.2 },
@@ -56,7 +57,10 @@ export const Gui = () => {
     };
     return (
         <motion.ul variants={variants} className="menu">
-            <h2>Data</h2>
+            <MenuWrapper>
+                <h2>Data</h2>
+            </MenuWrapper>
+
             <GuiSlider
                 label="iterations"
                 name="iterations"
@@ -77,7 +81,9 @@ export const Gui = () => {
                 onChange={handleChange}
             />
             <TestButton handleSubmit={handleSubmit} />
-            <h2>Forces</h2>
+            <MenuWrapper>
+                <h2>Forces</h2>
+            </MenuWrapper>
             <GuiSlider
                 label="gravity"
                 name="gravitation"
@@ -99,7 +105,9 @@ export const Gui = () => {
                 range={[0, 100]}
                 onChange={handleChange}
             />
-            <h2>Render</h2>
+            <MenuWrapper>
+                <h2>Render</h2>
+            </MenuWrapper>
             <TestCheckbox
                 label="Show Titles"
                 name="showTitles"

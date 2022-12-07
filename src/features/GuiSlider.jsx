@@ -5,6 +5,8 @@ const variants = {
     open: {
         y: 0,
         opacity: 1,
+        pointerEvents: "auto",
+        cursor: "pointer",
         transition: {
             y: { stiffness: 1000, velocity: -100 },
         },
@@ -12,6 +14,8 @@ const variants = {
     closed: {
         y: 50,
         opacity: 0,
+        pointerEvents: "none",
+        cursor: "default",
         transition: {
             y: { stiffness: 1000 },
         },
@@ -20,6 +24,7 @@ const variants = {
 
 export const GuiSlider = ({ label, name, value, range, onChange }) => {
     const style = { border: `2px solid rgb(46, 46, 46)` };
+
     return (
         <motion.div
             variants={variants}
@@ -29,7 +34,7 @@ export const GuiSlider = ({ label, name, value, range, onChange }) => {
         >
             <div className="text">{label}</div>
             <input
-                className="text-placeholder slider"
+                className={`text-placeholder slider `}
                 style={style}
                 type="range"
                 min={range[0]}
