@@ -15,7 +15,7 @@ const variants = {
     },
 };
 
-export const Gui = () => {
+export const Gui = ({ closePanel }) => {
     const { setSearchWiki, setRenderParameters, setForceParameters } =
         useGlobalContext();
     const [parameters, setParameters] = useState({
@@ -54,6 +54,7 @@ export const Gui = () => {
             numLinks,
             iterations,
         });
+        closePanel();
     };
     return (
         <motion.ul variants={variants} className="menu">

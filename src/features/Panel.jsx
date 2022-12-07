@@ -38,7 +38,7 @@ export const Panel = () => {
             className="panel"
         >
             <motion.div className="background" variants={sidebar} />
-            <Gui />
+            <Gui closePanel={() => toggleOpen(false)} />
             <MenuToggle toggle={() => toggleOpen()} />
             {!isMobileView && (
                 <h1
