@@ -22,13 +22,18 @@ li {
     padding: 0;
     list-style: none;
 }
+.open {
+    z-index: 999;
+}
+.closed {
+    z-index: 1;
+}
 .panel {
     position: absolute;
     top: 0;
     right: 0;
     bottom: 0;
-    width: calc(min(350px, 100vw));
-    z-index: 1;
+    width: calc(min(400px, 100vw));
 
     .background {
         position: absolute;

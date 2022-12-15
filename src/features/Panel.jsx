@@ -35,7 +35,7 @@ export const Panel = () => {
             animate={isOpen ? "open" : "closed"}
             custom={{ height, width }}
             ref={containerRef}
-            className="panel"
+            className={`panel ${isOpen ? "open" : "closed"}`}
         >
             <motion.div className="background" variants={sidebar} />
             <Gui closePanel={() => toggleOpen(false)} />
