@@ -15,10 +15,19 @@ const Console = () => {
     return (
         <div className="console">
             <div className="console-header">
-                <button onClick={() => setMessageList([])}>Clear</button>
-                <h3>Console</h3>
-                <button onClick={() => setShowConsole(!showConsole)}>
+                <button
+                    className="btn btn-show"
+                    onClick={() => setShowConsole(!showConsole)}
+                >
                     {showConsole ? "hide" : "show"}
+                </button>
+                <h3>Console</h3>
+
+                <button
+                    className="btn btn-clear"
+                    onClick={() => setMessageList([])}
+                >
+                    Clear
                 </button>
             </div>
 
