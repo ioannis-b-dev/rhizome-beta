@@ -12,17 +12,25 @@ const AppProvider = ({ children }) => {
     const [forceParameters, setForceParameters] = useState({});
     const [apiParameters, setApiParameters] = useState({});
     const [data, setData] = useState(null);
+    const [currentMessage, setCurrentMessage] = useState("");
+
     const getData = useCallback(async () => {
         setLoading(true);
         setData(null);
+        setCurrentMessage("began searching the Wikipedia API...");
+
         try {
             let simulationData = {};
             //FIRST ITERATION
             let parentData;
             let childrenData;
+            setCurrentMessage(`fetching data for ${searchWiki.origin}...`);
             parentData = await getParentData(searchWiki.origin);
             parentData = { ...parentData, isParent: true };
-
+            setCurrentMessage(`data received for ${searchWiki.origin}...`);
+            setCurrentMessage(
+                `fetching data for all children connected to ${searchWiki.origin}...`
+            );
             childrenData = await getChildrenData(
                 searchWiki.origin,
                 searchWiki.numLinks
@@ -38,8 +46,6 @@ const AppProvider = ({ children }) => {
                         parentData.id,
                         2
                     );
-                    // console.log("PARENT:", parentData);
-                    // console.log("CHILDREN:", newChildrenData);
                     const { nodes, links } = dataToVis({
                         parentData,
                         childrenData: newChildrenData,
@@ -47,13 +53,18 @@ const AppProvider = ({ children }) => {
                     simulationData.nodes.push(...nodes);
                     simulationData.links.push(...links);
                 }
+                console.log(simulationData);
                 setData(simulationData);
+                setCurrentMessage("found all children");
             } else {
                 setData(null);
             }
 
             setLoading(false);
         } catch (error) {
+            setCurrentMessage(
+                "there was an error with your request please try again"
+            );
             setLoading(false);
         }
     }, [searchWiki]);
@@ -74,6 +85,7 @@ const AppProvider = ({ children }) => {
                 setForceParameters,
                 apiParameters,
                 setApiParameters,
+                currentMessage,
             }}
         >
             {children}

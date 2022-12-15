@@ -1,7 +1,7 @@
 $color-dark: rgb(46, 46, 46);
 $color-white: #fff;
 
-button {
+.toggle {
     outline: none;
     border: none;
     -webkit-user-select: none;
@@ -28,6 +28,7 @@ li {
     right: 0;
     bottom: 0;
     width: calc(min(350px, 100vw));
+    z-index: 999;
 
     .background {
         position: absolute;

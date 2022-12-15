@@ -1,0 +1,28 @@
+$color-dark: rgb(46, 46, 46);
+$color-white: #eee;
+.nodeinfo {
+    padding: 10px;
+    * {
+        color: $color-dark;
+        font-family: "Montserrat", sans-serif;
+    }
+    .title {
+        text-align: center;
+        color: $color-dark;
+        font-size: 14px;
+        font-weight: 600;
+    }
+    position: absolute;
+    z-index: 999;
+    max-width: 250px;
+    border: 1px solid white;
+    border-radius: 0.1em;
+    background-color: $color-white;
+    p {
+        text-align: left;
+        font-weight: 300;
+        font-size: 12px;
+        line-height: 16px;
+        color: $color-dark;
+    }
+}

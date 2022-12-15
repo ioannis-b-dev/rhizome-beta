@@ -7,7 +7,7 @@ import {
     forceLink,
     forceCenter,
 } from "d3-force";
-import { useGlobalContext } from "../helpers/context";
+import { useGlobalContext } from "../../helpers/context";
 import Node from "./Node";
 import Spring from "./Spring";
 import { motion } from "framer-motion";

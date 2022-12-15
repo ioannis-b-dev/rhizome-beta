@@ -17,6 +17,7 @@ $textC: #f9feff;
             fill: $textC;
             font-size: 20px;
             alignment-baseline: middle;
+            pointer-events: none;
         }
     }
     .parent {

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGlobalContext } from "../helpers/context";
+import { useGlobalContext } from "../../helpers/context";
 const Node = ({ x, y, size, title, isParent }) => {
     const { renderParameters: showAllTitles } = useGlobalContext();
     const [showTitle, setshowTitle] = useState(false);
@@ -13,7 +13,12 @@ const Node = ({ x, y, size, title, isParent }) => {
             onMouseEnter={() => setshowTitle(true)}
             onMouseLeave={() => setshowTitle(false)}
         >
-            <circle cx={0} cy={0} r={!isParent ? size : parentSize(size)} />
+            <circle
+                cx={0}
+                cy={0}
+                r={!isParent ? size : parentSize(size)}
+                onClick={() => console.log(title)}
+            />
             {(showTitle || isParent || showAllTitles) && (
                 <text transform={`translate(${size + 5},0)`}>{title}</text>
             )}

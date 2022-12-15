@@ -115,7 +115,6 @@ export const Gui = ({ closePanel }) => {
                 checked={parameters.showTitles}
                 onChange={handleChange}
             />
-            {console.log(parameters)}
         </motion.ul>
     );
 };

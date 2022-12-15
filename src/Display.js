@@ -1,20 +1,28 @@
 import { useGlobalContext } from "./helpers/context";
-import FDgraph from "./FDgraph";
+import FDgraph from "./components/FDgraph";
 import Loader from "./Loader";
 import useScreenSize from "./helpers/useScreenSize";
+
 const Display = () => {
     const { data, loading } = useGlobalContext();
-    const {
-        screenSize: { width, height },
-    } = useScreenSize();
+    const { screenSize } = useScreenSize();
+
     return (
-        <svg width={width} height={height}>
+        <svg width={screenSize.width} height={screenSize.height}>
             {data ? (
-                <FDgraph data={data} width={width} height={height} />
+                <FDgraph
+                    data={data}
+                    width={screenSize.width}
+                    height={screenSize.height}
+                />
             ) : loading ? (
-                <Loader x={width / 2} y={height / 2} />
+                <Loader x={screenSize.width / 2} y={screenSize.height / 2} />
             ) : (
-                <text x={width / 2} y={height / 2} fill="white">
+                <text
+                    x={screenSize.width / 2}
+                    y={screenSize.height / 2}
+                    fill="white"
+                >
                     {"Input a data origin to begin"}
                 </text>
             )}

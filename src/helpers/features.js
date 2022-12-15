@@ -14,6 +14,34 @@ const recursion = async (children, iterations, data) => {
         await recursion(newChildrenData, iterations, data);
     }
 };
+
+async function getDataTree(parent, numLinks, depth) {
+    // add base case to end recursion when depth exceeds a certain value
+    if (depth > 10) {
+        return;
+    }
+    console.log(depth);
+    let data = {};
+
+    // get data for the parent page
+    let parentData = await getParentData(parent);
+    parentData = { ...parentData, isParent: true };
+    data[parent] = parentData;
+
+    // get data for the children pages
+    let childrenData = await getChildrenData(parent, numLinks);
+    data = { ...data, ...childrenData };
+
+    // recursively get data for the children's children
+    for (let child of Object.keys(childrenData)) {
+        data = {
+            ...data,
+            ...(await getDataTree(child, numLinks, depth + 1)),
+        };
+    }
+
+    return data;
+}
 var recursiveData = async function f(parent, iterations, data) {
     if (iterations < 0) return data;
     let newChildrenData = await getChildrenData(parent.id, 2);
