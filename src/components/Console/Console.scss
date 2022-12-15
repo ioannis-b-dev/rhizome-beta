@@ -1,14 +1,16 @@
 .console {
     position: absolute;
+    z-index: 2;
     bottom: 1px;
     left: 50%;
     transform: translateX(-50%);
-    overflow: hidden;
     width: calc(min(400px, 100vw));
+    overflow: hidden;
+
     border: 1px solid white;
     border-radius: 1em;
     padding: 0.7em 1em;
-    z-index: 2;
+
     &-header {
         position: sticky;
         color: white;
@@ -30,10 +32,12 @@
             background-color: black;
             color: white;
 
-            &:hover {
-                border: 2px solid black;
-                background-color: white;
-                color: black;
+            @media (hover: hover) and (pointer: fine) {
+                &:hover {
+                    border: 2px solid black;
+                    background-color: white;
+                    color: black;
+                }
             }
         }
     }
