@@ -28,7 +28,7 @@ li {
     right: 0;
     bottom: 0;
     width: calc(min(350px, 100vw));
-    z-index: 999;
+    z-index: 1;
 
     .background {
         position: absolute;
@@ -111,6 +111,7 @@ h2 {
     width: 50%;
 }
 .inputtext {
+    border: 2px solid $color-dark;
     border-radius: 5px;
     color: $color-dark;
     text-align: center;

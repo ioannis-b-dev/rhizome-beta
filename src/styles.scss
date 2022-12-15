@@ -5,7 +5,11 @@ $color-white: #fff;
 * {
     margin: 0;
     padding: 0;
-    color: white;
+    border: 0;
+    outline: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
 }
 textarea:focus,
 input:focus {
@@ -50,7 +54,7 @@ $debug: 1px solid red;
         letter-spacing: 4px;
         top: 12.5px;
         left: 1em;
-        // transform: translateX(-100%);
+        color: $color-white;
         font-style: italic;
 
         font-size: 20px;
