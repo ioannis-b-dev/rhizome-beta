@@ -53,9 +53,12 @@ $color-dark: rgb(46, 46, 46);
         height: 300px;
         display: flex;
         flex-direction: column;
-        gap: 1em;
+        gap: 0.2em;
         padding-block: 1em;
         overflow-y: auto;
+        color: white;
+        font-weight: 200;
+        font-family: monospace;
     }
 }
 div::-webkit-scrollbar {
