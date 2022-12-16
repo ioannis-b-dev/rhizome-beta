@@ -100,7 +100,6 @@ export default function FDgraph({ data, width, height, bgColor }) {
         <motion.g
             className="forceGraph"
             transform={`translate(${centerX},${centerY})`}
-            drag
         >
             <ForceGraph nodes={nodes} links={links} N={N} />
         </motion.g>

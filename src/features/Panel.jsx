@@ -22,6 +22,7 @@ const sidebar = {
             stiffness: 400,
             damping: 40,
         },
+        height: "60px",
     }),
 };
 export const Panel = () => {
