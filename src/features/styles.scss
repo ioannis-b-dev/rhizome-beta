@@ -24,10 +24,11 @@ li {
 }
 .open {
     z-index: 999;
+    height: 100%;
 }
 .closed {
     z-index: 1;
-    height: 60px;
+    height: 10%;
 }
 .panel {
     position: absolute;

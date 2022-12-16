@@ -9,6 +9,7 @@ import MenuWrapper from "./MenuWrapper";
 const variants = {
     open: {
         transition: { staggerChildren: 0.07, delayChildren: 0.2 },
+        height: "100%",
     },
     closed: {
         transition: { staggerChildren: 0.05, staggerDirection: -1 },

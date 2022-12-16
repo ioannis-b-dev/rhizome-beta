@@ -13,6 +13,7 @@ const sidebar = {
             stiffness: 20,
             restDelta: 2,
         },
+        height: "100%",
     }),
     closed: (height = 1000, width = 350) => ({
         clipPath: `circle(20px at 88.5% 32.5px)`,
